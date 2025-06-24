@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -37,7 +38,7 @@ export default function Login() {
           <input type="password" className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-200 outline-none transition" value={password} onChange={e => setPassword(e.target.value)} required />
         </div>
         <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Login</button>
-        <p className="mt-4 text-center text-sm">Don't have an account? <a href="/auth/register" className="text-blue-600 hover:underline hover:text-blue-800 transition">Register</a></p>
+        <p className="mt-4 text-center text-sm">Don&apos;t have an account? <Link href="/auth/register" className="text-blue-600 hover:underline hover:text-blue-800 transition">Register</Link></p>
       </form>
     </div>
   );
