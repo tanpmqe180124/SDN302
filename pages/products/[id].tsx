@@ -2,11 +2,20 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+
+type Product = {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  image?: string;
+};
 
 export default function ProductDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const { data: session } = useSession();
   const [error, setError] = useState('');
 
@@ -35,7 +44,7 @@ export default function ProductDetail() {
     <div className="max-w-xl mx-auto py-8 px-4">
       {error && <div className="mb-4 text-red-500 font-semibold">{error}</div>}
       {product.image && (
-        <img src={product.image} alt={product.name} className="w-full h-64 object-cover mb-4 rounded-lg hover:scale-105 transition-transform duration-200" />
+        <Image src={product.image} alt={product.name} width={600} height={256} className="w-full h-64 object-cover mb-4 rounded-lg hover:scale-105 transition-transform duration-200" />
       )}
       <h1 className="text-3xl font-extrabold mb-2 text-blue-700 drop-shadow">{product.name}</h1>
       <p className="mb-2 text-gray-700 text-lg">{product.description}</p>

@@ -1,9 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 
+type Product = {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  image?: string;
+};
+
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -33,16 +42,18 @@ export default function Home() {
             No products found.
           </div>
         )}
-        {products.map((product: any) => (
+        {products.map((product) => (
           <Link
             key={product._id}
             href={`/products/${product._id}`}
             className="group block border border-gray-200 rounded-xl p-4 bg-white shadow-sm hover:shadow-lg transition relative overflow-hidden"
           >
             {product.image && (
-              <img
+              <Image
                 src={product.image}
                 alt={product.name}
+                width={400}
+                height={192}
                 className="w-full h-48 object-cover mb-3 rounded-lg group-hover:scale-105 transition-transform duration-200"
               />
             )}

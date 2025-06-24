@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -46,7 +47,7 @@ export default function Register() {
           <input type="password" className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-200 outline-none transition" value={password} onChange={e => setPassword(e.target.value)} required />
         </div>
         <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Register</button>
-        <p className="mt-4 text-center text-sm">Already have an account? <a href="/auth/login" className="text-blue-600 hover:underline hover:text-blue-800 transition">Login</a></p>
+        <p className="mt-4 text-center text-sm">Already have an account? <Link href="/auth/login" className="text-blue-600 hover:underline hover:text-blue-800 transition">Login</Link></p>
       </form>
     </div>
   );
