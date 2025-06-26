@@ -8,12 +8,24 @@ function NavBar() {
   const { data: session, status } = useSession();
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur shadow-sm mb-8 px-4 py-3 flex justify-between items-center border-b border-gray-200">
-      <div>
+      <div className="flex gap-6 items-center">
         <Link
           href="/"
           className="font-extrabold text-2xl text-blue-700 tracking-tight hover:opacity-80 transition"
         >
           Clothing Store
+        </Link>
+        <Link
+          href="/cart"
+          className="font-medium text-blue-700 hover:underline hover:text-blue-900 transition"
+        >
+          Cart
+        </Link>
+        <Link
+          href="/orders"
+          className="font-medium text-blue-700 hover:underline hover:text-blue-900 transition"
+        >
+          Orders
         </Link>
       </div>
       <div className="flex gap-4 items-center">
